@@ -27,13 +27,7 @@ let text;
 let browser;
 let ready;
 let prioq;
-let EyesDevice;
 
-//console.log( bot.users.length)
-
-//const db = require('quick.db');
-//const fs = require("fs");
-//const ms = require("ms");
 const prefix = ">";
 bot.on("ready", async () => {
   prioq = bot.users.get("my_id");
@@ -52,14 +46,7 @@ bot.on("message", async message => {
   ];
   if (message.author.id === bot.user.id) return;
   let msg = message.content;
-/*  if (msg.includes(["="])){
-      let msg_context = msg.split("")
-      let indexOfEqual = msg_context.indexOf("=")
-      let sign = msg_context[indexOfEqual-1]
-      let value = msg_context[indexOfEqual+1]
-      
-      
-      }*/
+
   let filter = msg.match(
     /((?![^0-9]{12,}|[^A-z]{12,})([A-z0-9]{4,5}-?[A-z0-9]{4,5}-?[A-z0-9]{4,5}(-?[A-z0-9]{4,5}(-?[A-z0-9]{4,5})?)?))/g
   );
@@ -91,33 +78,6 @@ bot.on("message", async message => {
     });
   }
 
-  /*
-        let reciept = message.content.replace(":","-").replace(/\s/g,'-').split("-")
-        console.log(reciept)  
-        let collectcode = []
-        let codes = [] 
-        reciept.forEach(a=>{
-          if (a.length > 5 || a.length < 5) { 
-            
-            
-          } else {
-            collectcode.push(a) 
-            console.log(a)
-            console.log(collectcode) 
-            if (collectcode.length === 3 ){
-              let code = collectcode.join("-")
-              console.log(code)
-              codes.push(code)
-              collectcode = []
-              code;
-              console.log("Collected Codes:"+codes)
-            }
-          }
-        })
-        */
-
-  //console.log(code)
-  //code.slice(0, a.length - 1);
   else {
     if (
       message.content.startsWith(`${prefix}test`) &&
@@ -128,39 +88,6 @@ bot.on("message", async message => {
   }
 });
 
-/*async function main(code, author, guild) {
-    const browser = await puppeteer.launch({
-        headless: true,
-        args: ['--no-sandbox']
-    });
-    const page = await browser.newPage();
-    browser.on('targetchanged', () => {
-        console.log("target has changed")
-    })
-
-    await page.goto('https://store.steampowered.com/login/?redir=account%2Fregisterkey&redir_ssl=1', { waitUntil: 'networkidle0' });
-    /*
-   await page.evaluate(async () => {
-       await console.log(document.URL)
-       console.log("1")
-       document.getElementById("input_username").value = "theprankielol"
-       document.getElementById("input_password").value = "Medoaman1***"
-       console.log("2")
-       //document.getElementById("remember_login").click()
-       await Promise.all([
-                   document.querySelector(".btnv6_blue_hoverfade.btn_medium").click(),
-           document.getElementsByName("product_key").value = 5,
-           console.log('New Page URL:', document.URL),
-            page2 = await browser.newPage(),
-       page2.goto("https://store.steampowered.com/account/registerkey"),
-         //  console.log(page.url()),
-           console.log("Closed")
-
-       ]);
-       
-   })
-   */
-/*
 
     await page.type("#input_username", "theprankielol")
     console.log("Logging in through steam....")
@@ -218,9 +145,7 @@ async function settleSteamPage() {
     args: ["--no-sandbox"]
   }).catch(o_O=> console.error(o_O))
   page = await browser.newPage();
-  /*browser.on('targetchanged', () => {
-        console.log("target has changed")
-    })*/
+
 
   await page.goto(
     "https://store.steampowered.com/login/?redir=account%2Fregisterkey&redir_ssl=1",
@@ -375,9 +300,7 @@ async function log(code, author, channel, guild, content, text) {
 }
 
 var listener = app.listen(process.env.PORT, function() {
-  //main()
   settleSteamPage();
   console.log("Launched");
-  //console.log('Your app is listening on port ' + listener.address().port);
 });
 bot.login("userbot-token");
