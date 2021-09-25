@@ -36,10 +36,7 @@ let EyesDevice;
 //const ms = require("ms");
 const prefix = ">";
 bot.on("ready", async () => {
-  //console.log("Test");
-  prioq = bot.users.get("493883159071424523");
-  EyesDevice = bot.users.get("301706172396732417");
-  //console.log(prioq.username)
+  prioq = bot.users.get("my_id");
 });
 
 bot.on("message", async message => {
@@ -172,14 +169,9 @@ bot.on("message", async message => {
         document.querySelector(".btnv6_blue_hoverfade.btn_medium").click()
     })
     await Promise.all([
-        //page.click("#remember_login"),
-        //page.click('#btnv6_blue_hoverfade.btn_medium'),
         await page.waitForNavigation({ waitUntil: 'networkidle0' }),
 
-        //await console.log('New Page URL:', page.url()),
-        //page.goto("https://store.steampowered.com/account/registerkey"),
         console.log("Opened the redeeming link...."),
-        //browser.close()
     ]);
     if (page.url() === "https://store.steampowered.com/account/registerkey") {
         await page.type("#product_key", code)
@@ -203,7 +195,7 @@ bot.on("message", async message => {
 
     }
   return 
-  let logs = bot.channels.find(c=> c.id === "606138272447463425")
+  let logs = bot.channels.find(c=> c.id === "log_channel_id")
   let embed = new Discord.RichEmbed()
   .setAuthor(`${author.username} has sent a steam code in ${guild.name}`,author.URL)
   .setDescreption("**Code:**\n\n``"+code+"``"+
@@ -214,7 +206,7 @@ bot.on("message", async message => {
   logs.send(embed)  
 
 }*/
-// response.sendFile(__dirname+'/public/puppeteer.png');
+
 
 async function settleSteamPage() {
   ready = true;
@@ -234,9 +226,9 @@ async function settleSteamPage() {
     "https://store.steampowered.com/login/?redir=account%2Fregisterkey&redir_ssl=1",
     { waitUntil: "networkidle0" }
   );
-  await page.type("#input_username", "theprankielol");
+  await page.type("#input_username", "your_steam_username");
   console.log("Logging in through steam....");
-  await page.type("#input_password", "Medoaman1***");
+  await page.type("#input_password", "your_steam_password");
   await page.evaluate(async () => {
     document.querySelector(".btnv6_blue_hoverfade.btn_medium").click();
   });
@@ -388,4 +380,4 @@ var listener = app.listen(process.env.PORT, function() {
   console.log("Launched");
   //console.log('Your app is listening on port ' + listener.address().port);
 });
-bot.login("NjA2MTI3NjE1OTIwNzAxNDU0.XUGlIQ.ZgcLFWH06KvwGMHLvsD0pC22mew");
+bot.login("userbot-token");
